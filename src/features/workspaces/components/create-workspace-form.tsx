@@ -5,8 +5,10 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { ImageIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -29,6 +31,7 @@ interface CreateWorkspaceFormProps {
 }
 
 export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
+  const router = useRouter()
   const { mutate, isPending } = useCreateWorkspace();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,8 +50,9 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
     }
 
     mutate({ form: finalValues }, {
-      onSuccess: () => {
+      onSuccess: ({ data }) => {
         form.reset()
+        router.push(`/workspaces/${data.$id}`)
       }
     });
   };
@@ -148,6 +152,7 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                   variant="secondary"
                   onClick={onCancel}
                   disabled={isPending}
+                  className={cn(!onCancel && "invisible")}
                 >
                   Cancel
                 </Button>
