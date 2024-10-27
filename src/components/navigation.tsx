@@ -30,7 +30,7 @@ const routes = [
   },
   {
     label: "Members",
-    href: "members",
+    href: "/members",
     icon: UsersIcon,
     activeIcon: UsersIcon,
   },

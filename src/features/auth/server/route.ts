@@ -8,6 +8,11 @@ import { sessionMiddleware } from "@/lib/session-middleware";
 import { createAdminClient } from "@/lib/appwrite";
 import { AUTH_COOKIE } from "../constants";
 
+//zValidator的首參數
+//params: 使用於從 URL 路徑中提取的參數，比如 /user/:id 中的 id
+//query: 用於提取 URL 中的查詢參數，比如 /search?query=test 中的 query
+//json: 使用於 JSON 請求體（body）中的數據，比如在 POST 或 PUT 請求中發送的 JSON 數據
+
 const app = new Hono()
   .get(
     "/current",
