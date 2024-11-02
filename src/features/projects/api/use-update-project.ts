@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
@@ -9,7 +8,6 @@ type ResponseType = InferResponseType<typeof client.api.projects[":projectId"]["
 type RequestType = InferRequestType<typeof client.api.projects[":projectId"]["$patch"]>
 
 export const useUpdateProject = () => {
-  const router = useRouter()
   const queryClient = useQueryClient()
 
   const mutation = useMutation<
@@ -28,9 +26,8 @@ export const useUpdateProject = () => {
     },
     onSuccess: ({ data }) => {
       toast.success("Project udpated")
-      router.refresh()
       queryClient.invalidateQueries({ queryKey: ["projects"] })
-      queryClient.invalidateQueries({ queryKey: ["projectId", data.$id] })
+      queryClient.invalidateQueries({ queryKey: ["project", data.$id] })
     },
     onError: () => {
       toast.error("Failed to udpate project")
