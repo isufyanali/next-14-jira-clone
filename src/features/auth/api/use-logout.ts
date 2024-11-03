@@ -27,9 +27,8 @@ export const useLogout = () => {
     onSuccess: () => {
       toast.success("Logged out")
       router.refresh()
-      //清除所有當前帳號所使用的query
-      queryClient.invalidateQueries({ queryKey: ["current"] })
-      queryClient.invalidateQueries({ queryKey: ["workspaces"] })
+      //清除所有當前帳號所有的query
+      queryClient.invalidateQueries()
     },
     onError: () => {
       toast.error("Failed to log out")
