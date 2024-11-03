@@ -369,10 +369,14 @@ const app = new Hono()
       const workspaceIds = new Set(tasksToUpdate.documents.map(task => task.workspaceId))
 
       if(workspaceIds.size !== 1){
-        return c.json({ error: "All tasks must belong to the same workspace" })
+        return c.json({ error: "All tasks must belong to the same workspace" }, 400)
       }
 
       const workspaceId = workspaceIds.values().next().value
+
+      if(!workspaceId) {
+        return c.json({ error: "Workspace ID is required" }, 400)
+      }
 
       const member = await getMember({
         databases,

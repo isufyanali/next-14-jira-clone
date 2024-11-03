@@ -32,16 +32,13 @@ const localizer = dateFnsLocalizer({
   locales,
 })
 
-const action = ["PREV", "NEXT", "TODAY"] as const
-type actionType = (typeof action)[number]
-
 interface DataCalendarProps {
   data: Task[];
 }
 
 interface CustomToolbarProps {
   date: Date
-  onNavigate: (action: actionType) => void
+  onNavigate: (action: "PREV" | "NEXT" | "TODAY") => void
 }
 
 const CustomToolbar = ({ date, onNavigate }: CustomToolbarProps) => {
@@ -84,7 +81,7 @@ export const DataCalendar = ({ data }: DataCalendarProps) => {
     id: task.$id,
   }))
 
-  const handleNavigate = (action: actionType) => {
+  const handleNavigate = (action: "PREV" | "NEXT" | "TODAY") => {
     if(action === "PREV"){
       setValue(subMonths(value, 1))
     } else if(action === "NEXT"){

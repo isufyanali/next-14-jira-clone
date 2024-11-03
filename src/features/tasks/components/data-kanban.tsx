@@ -156,7 +156,7 @@ export const DataKanban = ({ data, onChange }: DataKanbanProps) => {
 
     //不能寫在setTasks中, 會造成前後端資料不同步
     onChange(updatesPayload);
-  }, []);
+  }, [onChange]);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
