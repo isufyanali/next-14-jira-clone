@@ -18,6 +18,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Add .env 
+```bash
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APPWRITE_ENDPOINT=
+NEXT_PUBLIC_APPWRITE_PROJECT=
+NEXT_PUBLIC_APPWRITE_DATABASE_ID=
+NEXT_PUBLIC_APPWRITE_WORKSPACES_ID=
+NEXT_PUBLIC_APPWRITE_MEMBERS_ID=
+NEXT_PUBLIC_APPWRITE_PROJECTS_ID=
+NEXT_PUBLIC_APPWRITE_TASKS_ID=
+NEXT_PUBLIC_APPWRITE_IMAGES_BUCKET_ID=
+NEXT_APPWRITE_KEY=
+```
+
 ## Start the backend server
 
 This application's backend is base on appwrite, you can choose cloud version or self post.
