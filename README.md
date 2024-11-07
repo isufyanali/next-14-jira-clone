@@ -18,6 +18,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Demo
+https://next-14-jira-clone.vercel.app/
+
 ## Add .env 
 ```bash
 NEXT_PUBLIC_APP_URL=http://localhost:3000
