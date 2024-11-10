@@ -28,6 +28,9 @@ export const useUpdateProject = () => {
       toast.success("Project udpated")
       queryClient.invalidateQueries({ queryKey: ["projects"] })
       queryClient.invalidateQueries({ queryKey: ["project", data.$id] })
+
+      queryClient.invalidateQueries({ queryKey: ["tasks"] })
+      queryClient.invalidateQueries({ queryKey: ["task", data.$id] })
     },
     onError: () => {
       toast.error("Failed to udpate project")
